@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html >
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script src="https://api-maps.yandex.ru/2.1/?load=package.standard&lang=ru-RU" type="text/javascript"></script>
+		<meta charset="UTF-8">
+		<title>Shopping List </title>
+		<meta name="viewport" content="width=device-width, user-scalable=no">
+		
+		<link rel="stylesheet" href="style.css">
+		
+	</head>
+	<body>
+		<div id="veus">
+			<div class="container" >
+				<div class="box1 margin-right" id="shopping-list">
+					<h4>To Visit List</h4>
+					
+					<div class="inputBox">
+						<input type='text'  v-model="inputTitle" class="searchButton" placeholder='Title' >
+						<input type='text'  id="suggest" v-model="inputAdress" class="searchButton" placeholder='Adress'  >
+					</div>
+					<button id="addItem" @click="addAdress(inputTitle, inputAdress)">Add Place</button>
+					
+					<div class="list">
+						<div class="listItem" v-for="adress in adresses" >
+							<input  type="checkbox"  @click="isVisited(adress)">
+							
+							<h3> {{adress.title}} </h3>
+							<h4> {{adress.adress}}</h4>
+							<button id="deleteItem"  @click="removeAdress(adress)" >Delete</button>
+						</div>
+					</div>
+				</div>
+				
+				<div class="box2" >
+					<h4>Map</h4>
+					<div id="map" style="width: 100%; height: 500px">
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type='text/javascript' src='https://unpkg.com/vue'></script>
+		<script type='text/javascript' src='index.js'></script>
+	</body>
+</html>
